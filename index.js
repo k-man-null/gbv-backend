@@ -39,13 +39,13 @@ app.post('/report', async (req,res)=>{
         try {
             await connection.query('INSERT INTO Report SET ?', data, function (error, results, fields) {
                
-                res.status(200).send("Inserted");
+                res.send("Inserted");
                 return
               });
             
         } catch (error) {
             
-            res.status(400).send(error);
+            res.send(error);
             return;
         }
 
