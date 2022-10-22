@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser')
 const mysql = require('mysql')
+const path = require('path')
 
 const connection = mysql.createConnection({
     host: 'database-2.cmwdr0ca6gea.us-east-1.rds.amazonaws.com',
@@ -24,7 +25,6 @@ const app = express();
 app.use(bodyParser.json())
 
 
-
 app.post('/report', async (req,res)=>{
     let data = {
         latitude,
@@ -39,7 +39,7 @@ app.post('/report', async (req,res)=>{
         try {
             await connection.query('INSERT INTO Report SET ?', data, function (error, results, fields) {
                
-                res.status(200).send(results.insertId);
+                res.status(200).send("Inserted");
                 return
               });
             
